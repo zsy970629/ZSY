@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <title>食算｜AI 食物熱量辨識</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="食算首頁"><span class="brand-mark">✦</span><span>食算</span></a>
+      <span class="status-pill"><span class="status-dot"></span>AI 線上</span>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">SMART NUTRITION</p>
+          <h1>今天吃了什麼？<br /><span>讓照片告訴你。</span></h1>
+          <p class="hero-copy">上傳餐點照片，AI 會快速估算熱量與主要營養素，讓每一餐都更有感。</p>
+        </div>
+        <div class="hero-orb" aria-hidden="true"><span>🥗</span></div>
+      </section>
+
+      <section class="workspace-grid">
+        <div class="card upload-card">
+          <div class="section-heading"><div><p class="eyebrow">STEP 01</p><h2>上傳餐點照片</h2></div><span class="heading-icon">↗</span></div>
+          <label class="dropzone" id="dropzone" for="fileInput">
+            <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" />
+            <div id="uploadPrompt" class="upload-prompt">
+              <span class="upload-icon">↑</span>
+              <strong>點擊上傳或拖曳照片到這裡</strong>
+              <small>支援 JPG、PNG、WEBP，最大 10MB</small>
+            </div>
+            <div id="previewWrap" class="preview-wrap hidden"><img id="preview" alt="待辨識的餐點照片" /><button id="removeImage" class="remove-button" type="button" aria-label="移除照片">×</button></div>
+          </label>
+          <button id="analyzeButton" class="primary-button" type="button" disabled><span>開始 AI 辨識</span><span>→</span></button>
+          <p class="privacy-note">🔒 照片只會暫存於本次分析，不會保存到伺服器。</p>
+        </div>
+
+        <div class="card result-card" id="resultCard">
+          <div class="section-heading"><div><p class="eyebrow">STEP 02</p><h2>辨識結果</h2></div><span class="heading-icon">✦</span></div>
+          <div id="emptyResult" class="empty-result"><div class="empty-illustration">◌</div><strong>等待你的餐點照片</strong><p>分析完成後，結果會顯示在這裡</p></div>
+          <div id="loadingResult" class="loading-result hidden"><div class="spinner"></div><strong>AI 正在分析你的餐點…</strong><p>通常需要 5–15 秒，請稍候</p></div>
+          <div id="resultContent" class="result-content hidden"></div>
+          <div id="errorMessage" class="error-message hidden"></div>
+        </div>
+      </section>
+
+      <section class="history-section" id="historySection">
+        <div class="history-heading"><div><p class="eyebrow">RECENT</p><h2>最近紀錄</h2></div><button id="clearHistory" class="text-button" type="button">清除紀錄</button></div>
+        <div id="historyList" class="history-list"><p class="muted">完成第一次辨識後，紀錄會出現在這裡。</p></div>
+      </section>
+      <p class="disclaimer">※ AI 熱量為估算值，僅供日常飲食參考，不取代專業營養諮詢。</p>
+    </main>
+    <footer>食算 · Smart Nutrition · Powered by CGU AI</footer>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
