@@ -19,7 +19,7 @@ const upload = multer({
   },
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '.')));
 
 function extractText(data) {
   const content = data?.choices?.[0]?.message?.content;
